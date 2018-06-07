@@ -112,4 +112,3 @@ ENV QT_X11_NO_MITSHM 1
 
 # Expose port 8080 for Jupyter notebook
 EXPOSE 8080
-Z
