@@ -1,6 +1,7 @@
 # Installation
 
 ## Dependencies
+If using the docker image at [helloworld141/models](https://hub.docker.com/r/helloworld141/models/), you can skip this step and jump straight to [**## COCO API installation**](https://github.com/helloWorld141/models/blob/master/research/object_detection/g3doc/installation.md#coco-api-installation)
 
 Tensorflow Object Detection API depends on the following libraries:
 
