@@ -103,19 +103,6 @@ RUN apt-get update \
 && echo "c.NotebookApp.open_browser = False" >> /root/.jupyter/jupyter_notebook_config.py \
 && echo "c.NotebookApp.port = 8080" >> /root/.jupyter/jupyter_notebook_config.py \
 && echo "c.NotebookApp.password = 'sha1:d1a76026f118:82c006e5a506dd9c4c9f171050e3defaaca3a21e'" >> /root/.jupyter/jupyter_notebook_config.py 
-&& mkdir /git
-&& git clone https://github.com/cocodataset/cocoapi.git /git/cocoapi
-&& git clone https://github.com/tensorflow/models.git /git/models
-&& cd /git/cocoapi/PythonAPI
-&& make
-&& cp -r /git/cocoapi/PythonAPI/pycocotools /git/models/research/
-&& mkdir /utils
-&& mv pycocotools /utils
-&& cd /git/models/research/
-&& protoc object_detection/protos/*.proto --python_out=.
-&& export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
-&& cd /
-&& rm -r /git
 
 # For CUDA profiling, TensorFlow requires CUPTI
 ENV LD_LIBRARY_PATH /usr/local/cuda/extras/CUPTI/lib64:$LD_LIBRARY_PATH
