@@ -73,7 +73,6 @@ RUN apt-get update \
     # For nano editor
     nano \
     protobuf-compiler \
-    python-tk \
 && easy_install pip==10.0.1 \
 && pip --no-cache-dir install \
 	Pillow==5.1.0 \
@@ -88,7 +87,6 @@ RUN apt-get update \
 	scikit-learn \
 	imgaug \
 	IPython[all] \
-    pillow \
     lxml \
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/* \
