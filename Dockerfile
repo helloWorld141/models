@@ -74,7 +74,7 @@ RUN apt-get update \
     protobuf-compiler \
     python-pil \
     python-lxml \
-    python-tk
+    python-tk \
 && apt-get install -y --allow-downgrades --no-install-recommends \
 	libcudnn7=7.0.5.15-1+cuda9.0 \
 	libcudnn7-dev=7.0.5.15-1+cuda9.0 \
