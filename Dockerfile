@@ -1,4 +1,4 @@
-FROM nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04
+FROM nvidia/cuda:8.0-cudnn6-devel-ubuntu16.04
 
 
 # install debian packages
@@ -15,6 +15,7 @@ RUN apt-get update \
     curl \
     git \
     g++ \
+    git \
     gfortran-multilib \
     libavcodec-dev \
     libavformat-dev \
@@ -39,25 +40,25 @@ RUN apt-get update \
     less \
     procps \
     vim-tiny \
-    # install python 3
-    python3 \
-    python3-dev \
-    python3-pip \
-    python3-setuptools \
-    python3-virtualenv \
-    python3-wheel \
+    # install python 2
+    python \
+    python-dev \
+    python-pip \
+    python-setuptools \
+    python-virtualenv \
+    python-wheel \
     pkg-config \
     # requirements for numpy
     libopenblas-base \
-    python3-numpy \
-    python3-scipy \
+    python-numpy \
+    python-scipy \
     # requirements for keras
-    python3-h5py \
-    python3-yaml \
-    python3-pydot \
-    python3-tk \
-    python3-matplotlib \
-    python3-pillow \
+    python-h5py \
+    python-yaml \
+    python-pydot \
+    python-tk \
+    python-matplotlib \
+    python-pillow \
     # For Kaldi
     automake \
     libtool \
@@ -72,13 +73,8 @@ RUN apt-get update \
     # For nano editor
     nano \
     protobuf-compiler \
-    python-pil \
-    python-lxml \
     python-tk \
-&& apt-get install -y --allow-downgrades --no-install-recommends \
-	libcudnn7=7.0.5.15-1+cuda9.0 \
-	libcudnn7-dev=7.0.5.15-1+cuda9.0 \
-&& pip3 install --upgrade pip \
+&& easy_install pip==10.0.1 \
 && pip --no-cache-dir install \
 	Pillow==5.1.0 \
 	h5py==2.7.1 \
@@ -86,15 +82,14 @@ RUN apt-get update \
 	pandas \
 	cython==0.28.2 \
 	opencv-python \
-	tensorflow-gpu==1.5 \
-	keras==2.1.6 \
+	tensorflow-gpu==1.4 \
 	matplotlib \
 	scipy \
 	scikit-learn \
 	imgaug \
 	IPython[all] \
-&& ln -s /usr/bin/pip3 /usr/bin/pip \
-&& ln -s /usr/bin/python3 /usr/bin/python \
+    pillow \
+    lxml \
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/* \
 && jupyter-notebook --generate-config \
@@ -117,3 +112,4 @@ ENV QT_X11_NO_MITSHM 1
 
 # Expose port 8080 for Jupyter notebook
 EXPOSE 8080
+Z
